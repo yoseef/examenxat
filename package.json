@@ -1,0 +1,7 @@
+{
+  "name": "missatgeapp!!",
+  "dependencies": {
+    "express": "~4.11.2",
+    "body-parser": "~1.11.0"
+  }
+}
