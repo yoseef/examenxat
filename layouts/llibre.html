@@ -4,8 +4,8 @@
   <title>Receptes</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="http://bootswatch.com/cosmo/bootstrap.min.css" type="text/css" />
-
+  <!-- <link rel="stylesheet" href="http://bootswatch.com/cosmo/bootstrap.min.css" type="text/css" /> -->
+  <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css" type="text/css" />
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
@@ -51,7 +51,7 @@
             <br>
             <div class="btn-group btn-group-justified">
               <a class="btn btn-default" ng-click="removeLlibre()">Borrar</a>
-              <a class="btn btn-warning" ng-click="">Guardar</a>
+              <a class="btn btn-warning" ng-click="updateLlibre()">Guardar</a>
             </div>
 
           </fieldset>
@@ -63,27 +63,23 @@
     <div class="row">
       <hr>
       <br>
-      <div class="panel panel-default" ng-repeat="l in llibres" ng-click="llibreSeleccionat($index)" >
+      <div class="panel panel-default" ng-repeat="l in llibres" ng-click="llibreSeleccionat($index)">
         <!-- Default panel contents -->
-        <div class="panel-heading"><strong ng-bind="l.titol"></strong></div>
+        <div class="panel-heading">
+          <strong ng-bind="l.titol"></strong>
+        </div>
         <div class="panel-body">
-          <p >isbn : {{l.isbn}}</p>
-          <p >autors : {{l.autors}} </p>
+          <p>isbn : {{l.isbn}}</p>
+          <p>autors : {{l.autors}} </p>
         </div>
       </div>
-
-      <!-- <ul class="list-group">
-        <li class="list-group-item" ng-repeat="l in llibres" ng-click="">
-          <strong ng-bind="l.titol"></strong>
-          <p ng-bind="l.isbn"></p>
-          <p ng-bind="l.autors"></p>
-        </li>
-      </ul> -->
     </div>
   </div>
   <!-- Scripts-->
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular-resource.js"></script>
+  <!-- // <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.min.js"></script>
+  // <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular-resource.js"></script> -->
+  <script src="lib/angular.min.js"></script>
+  <script src="lib/angular-resource.js"></script>
   <!--<script src="lib/bootstrap/js/bootstrap.min.js"></script>-->
   <script src="app.js"></script>
 </body>
