@@ -1,9 +1,11 @@
 <html ng-app="app">
 
 <head>
-  <title><--Llibres--></title>
+  <title>
+    <--Llibres-->
+  </title>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css" type="text/css" />
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
@@ -11,6 +13,11 @@
 <body>
   <div class="container" ng-controller="LlibreCtrl">
     <div class="row">
+      <div class="alert alert-dismissible alert-success">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <h4>Codi!</h4>
+        <p>Codi de l' app penjat a GITHUB, <a href="https://github.com/yoseef/CURS-MEAN-STACK-Llibres-" class="alert-link">CURS-MEAN-STACK-Llibres-</a>.</p>
+      </div>
       <h1 class="text-center well">Llibres</h1>
       <div class="col-md-5  panel panel-success panel-body">
         <form class="form-horizontal form-group">
