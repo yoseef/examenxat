@@ -22,28 +22,36 @@
     actualitzar();
 
     $scope.addLlibre = function() {
-      LlibresFactory.save($scope.llibre, function() {
-        console.log("s'ha guardat");
-        actualitzar();
-        $scope.netejarCamps();
-      }, function(error) {
-        console.log("Error" + error);
-      })
+
+      if ($scope.llibre.titol != "" && $scope.llibre.isbn != "") {
+        LlibresFactory.save($scope.llibre, function() {
+          console.log("s'ha guardat");
+          actualitzar();
+          $scope.netejarCamps();
+        }, function(error) {
+          console.log("Error" + error);
+        })
+      }
+
     }
     $scope.updateLlibre = function() {
-      LlibresFactory.update($scope.SelectedLlibre, function() {
+      if ($scope.llibre.titol != "" && $scope.llibre.isbn != "") {
+        LlibresFactory.update($scope.SelectedLlibre, function() {
           console.log('updated')
           $scope.SelectedLlibre = Object.create(llibre);
           $scope.SelectedLlibre.autors = [];
           actualitzar();
         })
+      }
     }
     $scope.removeLlibre = function() {
-      LlibresFactory.delete({
-        id: $scope.SelectedLlibre.isbn
-      }, function(){
-        actualitzar();
-      })
+      if ($scope.llibre.titol != "" && $scope.llibre.isbn != "") {
+        LlibresFactory.delete({
+          id: $scope.SelectedLlibre.isbn
+        }, function() {
+          actualitzar();
+        })
+      }
     }
 
     $scope.netejarCamps = function() {
