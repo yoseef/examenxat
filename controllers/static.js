@@ -1,14 +1,13 @@
 var express = require('express');
-var route = express.Router()
-
-route.use(express.static(__dirname+"/../assets"));
-
+var router = express.Router()
 var options = {
-    root: __dirname + "/../layouts"
+  root: __dirname + "/../layouts"
 };
+router.use(express.static(__dirname + "/../assets"));
+//route.use(express.static(__dirname + "/../templates"));
 
-route.get("/", function (req, res, next) {
-    res.sendFile("llibre.html", options);
+router.get("/", function(req, res, next) {
+  res.sendFile("llibre.html", options);
 });
 
-module.exports = route
+module.exports = router;

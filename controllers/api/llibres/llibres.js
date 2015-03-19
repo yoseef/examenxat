@@ -1,7 +1,8 @@
 var router = require('express').Router();
 var Llibre = require("../../../models/llibre")
-  //URI api/llibres
+
 router.get("/", function(req, res, next) {
+  console.log('get /api/llibres');
   Llibre.find(function(err, llibre) {
     if (err) {
       return next(err);
