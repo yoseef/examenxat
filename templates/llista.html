@@ -1,0 +1,14 @@
+<div class="row">
+  <hr>
+  <br>
+  <div class="panel panel-default" ng-repeat="l in llibres" ng-click="llibreSeleccionat($index)">
+    <!-- Default panel contents -->
+    <div class="panel-heading">
+      <strong ng-bind="l.titol"></strong>
+    </div>
+    <div class="panel-body">
+      <p>isbn : {{l.isbn}}</p>
+      <p>autors : {{l.autors}} </p>
+    </div>
+  </div>
+</div>
