@@ -1,10 +1,17 @@
 <div class="row">
   <hr>
   <br>
-  <div class="panel panel-default" ng-repeat="l in llibres" ng-click="llibreSeleccionat($index)">
+  <!-- <div class= "row" ng-show="loading"> -->
+    <div ng-show="loading" class="whirly">
+        Loading...
+    </div>
+  <!-- </div> -->
+  <div class="panel panel-default" ng-repeat="l in llibres">
     <!-- Default panel contents -->
     <div class="panel-heading">
       <strong ng-bind="l.titol"></strong>
+      <button ng-click="removeLlibre($index)">Borrar</button>
+      <button ng-click="editarLlibre($index)">Editar</button>
     </div>
     <div class="panel-body">
       <p>isbn : {{l.isbn}}</p>

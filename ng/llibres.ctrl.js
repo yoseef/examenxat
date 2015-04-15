@@ -1,63 +1,22 @@
 angular.module('app')
-  .controller('LlibreCtrl', function($scope, LlibresFactory) {
-    var llibre = {
-      titol: "",
-      isbn: "",
-      autors: [],
-      date: new Date()
-    }
-
-    $scope.llibres = [];
-
-    var actualitzar = function() {
-      $scope.llibres = LlibresFactory.query(function(entries) {
-        $scope.llibres = entries;
-      });
-    }
-    $scope.llibre = Object.create(llibre);
-
-    $scope.SelectedLlibre;
-
-    actualitzar();
-
-    $scope.addLlibre = function() {
-      if ($scope.llibre.titol != "" && $scope.llibre.isbn != "") {
-        LlibresFactory.save($scope.llibre, function() {
-          console.log("s'ha guardat");
-          actualitzar();
-          $scope.netejarCamps();
-        }, function(error) {
-          console.log("Error" + error);
-        })
-      }
-    }
-    $scope.updateLlibre = function() {
-      if ($scope.SelectedLlibre.titol != "" && $scope.SelectedLlibre.isbn != "") {
-        LlibresFactory.update($scope.SelectedLlibre, function() {
-          console.log('updated')
-          $scope.SelectedLlibre = Object.create(llibre);
-          $scope.SelectedLlibre.autors = [];
-          actualitzar();
-        })
-      }
-    }
-    $scope.removeLlibre = function() {
-      if ($scope.SelectedLlibre.titol != "" && $scope.SelectedLlibre.isbn != "") {
-        LlibresFactory.delete({
-          id: $scope.SelectedLlibre.isbn
-        }, function() {
-          $scope.SelectedLlibre = Object.create(llibre);
-          $scope.SelectedLlibre.autors = [];
-          actualitzar();
-        })
-      }
-    }
-
-    $scope.netejarCamps = function() {
-      $scope.llibre = Object.create(llibre);
-      $scope.llibre.autors = [];
-    }
-    $scope.llibreSeleccionat = function(inx) {
-      $scope.SelectedLlibre = $scope.llibres[inx];
-    }
+  .controller('LlibreCtrl', function($scope, $location, UserSvc) {
+    $scope.$on('login', function(e, user) {
+      /*
+          Quan s'ha fet login s'emet l'event "login"
+          i això fa que la variable de l'scope "currentUser"
+          li diem quin usuari s'ha autenticant, d'aquesta manera
+          fem que apareguin diferents opcions al menú
+      */
+      $scope.currentUser = user;
+    });
+    $scope.logout = function() {
+      /*
+          Quan fem logout esborrem el token i la variable
+          de l'$scope "currentUser", d'aquesta forma desapareixen
+          els menús sensibles a la autenticació
+      */
+      UserSvc.logOut();
+      delete $scope.currentUser;
+      $location.path('/');
+    };
   });

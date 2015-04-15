@@ -8,81 +8,53 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css" type="text/css" />
   <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" href="lib/whirly.css" type="text/css">
 </head>
 
-<body>
-  <div class="container" ng-controller="LlibreCtrl">
-    <div class="row">
-      <div class="alert alert-dismissible alert-success">
-        <button type="button" class="close" data-dismiss="alert">×</button>
-        <h4>Codi!</h4>
-        <p>Codi de l' app penjat a GITHUB, <a href="https://github.com/yoseef/CURS-MEAN-STACK-Llibres-" class="alert-link">CURS-MEAN-STACK-Llibres-</a>.</p>
-      </div>
-      <h1 class="text-center well">Llibres</h1>
-      <div class="col-md-5  panel panel-success panel-body">
-        <form class="form-horizontal form-group">
-          <fieldset>
-            <legend>Nou Llibre</legend>
-            <label class="control-label" for="titol">Titol Llibre:</label>
-            <input class="form-control input-sm" type="text" id="titol" ng-model="llibre.titol">
-
-            <label class="control-label" for="isbn">Isbn :</label>
-            <input class="form-control input-sm" type="text" id="isbn" ng-model="llibre.isbn">
-
-            <label class="control-label" for="autors">Autors :</label>
-            <input class="form-control input-sm" type="text" id="autors" ng-model="llibre.autors">
-            <br>
-            <div class="btn-group btn-group-justified">
-              <a class="btn btn-default" ng-click="netejarCamps()">Cancelar</a>
-              <a class="btn btn-success" ng-click="addLlibre()">acceptar</a>
-            </div>
-          </fieldset>
-        </form>
+<body ng-app="app" ng-controller="LlibreCtrl">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/#/">¡Llibres!</a>
       </div>
 
-
-      <div class="col-md-5  col-md-offset-2 panel panel-warning panel-body">
-        <form class="form-horizontal form-group ">
-          <fieldset>
-            <legend>Editar Llibre</legend>
-            <label class="control-label" for="titol">Titol Llibre:</label>
-            <input class="form-control input-sm" type="text" id="titol" ng-model="SelectedLlibre.titol">
-
-            <label class="control-label" for="isbn">Isbn :</label>
-            <input class="form-control input-sm" type="text" id="isbn" ng-model="SelectedLlibre.isbn">
-
-            <label class="control-label" for="autors">Autors :</label>
-            <input class="form-control input-sm" type="text" id="autors" ng-model="SelectedLlibre.autors">
-
-            <br>
-            <div class="btn-group btn-group-justified">
-              <a class="btn btn-default" ng-click="removeLlibre()">Borrar</a>
-              <a class="btn btn-warning" ng-click="updateLlibre()">Guardar</a>
-            </div>
-
-          </fieldset>
-        </form>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class=""><a href="/#/">llibres</a></li>
+          <li ng-if="currentUser"><a href="/#/noullibre">Crea llibre</a></li>
+          <li ng-if="currentUser"><a href="/#/editarllibre">Editar llibre</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li ng-if="!currentUser"><a href="/#/registrar">Registrar</a></li>
+          <li ng-if="!currentUser"><a href="/#/login">Login</a></li>
+        </ul>
+        <ul ng-if="currentUser" class="nav navbar-nav navbar-right">
+          <li><a>[ User : {{currentUser.username}} ]</a></li>
+          <li><a ng-click="logout()" class="btn btn-danger btn-xs">Desconnectar</a></li>
+        </ul>
       </div>
-
+      <!-- /.navbar-collapse -->
     </div>
+    <!-- /.container-fluid -->
+  </nav>
 
+
+  <div class="container">
     <div class="row">
-      <hr>
-      <br>
-      <div class="panel panel-default" ng-repeat="l in llibres" ng-click="llibreSeleccionat($index)">
-        <!-- Default panel contents -->
-        <div class="panel-heading">
-          <strong ng-bind="l.titol"></strong>
-        </div>
-        <div class="panel-body">
-          <p>isbn : {{l.isbn}}</p>
-          <p>autors : {{l.autors}} </p>
-        </div>
-      </div>
+      <div ng-view></div>
     </div>
   </div>
   <script src="lib/angular.min.js"></script>
   <script src="lib/angular-resource.js"></script>
+  <script src="lib/angular-route.js"></script>
   <script src="app.js"></script>
 </body>
 

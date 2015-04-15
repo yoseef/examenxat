@@ -1,21 +1,20 @@
 <div class="row">
-  <div class="col-md-5  col-md-offset-2 panel panel-warning panel-body">
+  <div class="panel panel-warning panel-body">
     <form class="form-horizontal form-group ">
       <fieldset>
         <legend>Editar Llibre</legend>
         <label class="control-label" for="titol">Titol Llibre:</label>
-        <input class="form-control input-sm" type="text" id="titol" ng-model="SelectedLlibre.titol">
+        <input class="form-control input-sm" type="text" id="titol" ng-model="llibre.titol">
 
         <label class="control-label" for="isbn">Isbn :</label>
-        <input class="form-control input-sm" type="text" id="isbn" ng-model="SelectedLlibre.isbn">
+        <input class="form-control input-sm" type="text" id="isbn" ng-model="llibre.isbn">
 
         <label class="control-label" for="autors">Autors :</label>
-        <input class="form-control input-sm" type="text" id="autors" ng-model="SelectedLlibre.autors">
-
+        <input class="form-control input-sm" type="text" id="autors" ng-model="llibre.autors">
         <br>
         <div class="btn-group btn-group-justified">
-          <a class="btn btn-default" ng-click="removeLlibre()">Borrar</a>
-          <a class="btn btn-warning" ng-click="updateLlibre()">Guardar</a>
+          <a class="btn btn-default" ng-click="netejarCamps()">Cancelar</a>
+          <a class="btn btn-success" ng-click="updateLlibre()">Guardar</a>
         </div>
 
       </fieldset>
