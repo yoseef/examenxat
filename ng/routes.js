@@ -26,6 +26,16 @@ angular.module('app')
         templateUrl: "login.html",
         autoritzat: false
       })
+      .when("/autors", {
+        controller: "llistaAutors",
+        templateUrl: "autor/llista.html",
+        autoritzat: false
+      })
+      .when("/NouAutor", {
+        controller: "afegirAutor",
+        templateUrl: "autor/afegir.html",
+        autoritzat: false
+      })
       .otherwise({
         redirectTo: '/'
       });

@@ -1,24 +1,32 @@
 var router = require('express').Router();
-var Llibre = require("../../../models/llibre")
+var Llibre = require("../../../models/llibre");
 
 router.get("/", function(req, res, next) {
   console.log('get /api/llibres');
-  Llibre.find(function(err, llibre) {
-    if (err) {
-      return next(err);
-    }
-    res.json(llibre);
-  });
+  Llibre.find()
+    .populate('autors')
+    .exec(function(err, llibre) {
+      if (err) {
+        return next(err);
+      }
+      res.json(llibre);
+    });
+  // Llibre.find(function(err, llibre) {
+  //   if (err) {
+  //     return next(err);
+  //   }
+  //   res.json(llibre);
+  // });
 });
 router.post("/", function(req, res, next) {
   var llibre = new Llibre(req.body);
+  console.log(llibre);
   llibre.save(function(err, llibre) {
     if (err) {
       return res.status(500).send(err.message);
     }
     res.status(201).send("El llibre : " + req.body.isbn + " s'ha creat!!");
   });
-
 });
 router.put("/", function(req, res, next) {
   console.log(req.body);
@@ -30,15 +38,7 @@ router.put("/", function(req, res, next) {
     }
   });
 });
-// router.delete("/", function(req, res, next) {
-//   console.log(req.body);
-//   Llibre.remove({
-//     _id: req.params.id
-//   }, function(err) {
-//     res.json(true);
-//   });
-//   //  return res.status(400).send("Error cant Delete!!");
-// });
+
 
 //URL api/llibres/:id
 router.get("/:id", function(req, res, next) {

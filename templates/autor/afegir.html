@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="panel panel-success panel-body">
+    <form class="form-horizontal form-group">
+      <fieldset>
+        <legend>Registrar un nou autor</legend>
+        <label class="control-label" for="Nom">Nom :</label>
+        <input class="form-control input-sm" type="text" id="Nom" ng-model="autor.nom">
+
+        <label class="control-label" for="Cognom">Cognom :</label>
+        <input class="form-control input-sm" type="text" id="Cognom" ng-model="autor.cognom">
+
+        <label class="control-label" for="Cognom2">Cognom2  :</label>
+        <input class="form-control input-sm" type="text" id="Cognom2" ng-model="autor.cognom2">
+
+        <label class="control-label" for="Any">Any Neixament  :</label>
+        <input class="form-control input-sm" type="text" id="Any" ng-model="autor.any">
+
+        <br>
+        <div class="btn-group btn-group-justified">
+          <a class="btn btn-default" ng-click="netejarCamps()">Cancelar</a>
+          <a class="btn btn-success" ng-click="addAutor()">acceptar</a>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>

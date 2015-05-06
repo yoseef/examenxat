@@ -1,0 +1,22 @@
+<div class="row">
+  <hr>
+  <br>
+
+  <div ng-show="loading" class="whirly">
+    Loading...
+  </div>
+
+  <div class="panel panel-default" ng-repeat="a in Autors">
+    <!-- Default panel contents -->
+    <div class="panel-heading">
+      <strong ng-bind="a.nom"></strong>
+
+    </div>
+    <div class="panel-body">
+      <p>cognom : {{a.cognom}}</p>
+      <p>cognom2 : {{a.cognom2}} </p>
+      <p>any Neixament: {{a.any}}</p>
+      <p>Data Creacio : {{a.date}}
+    </div>
+  </div>
+</div>

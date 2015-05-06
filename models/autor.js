@@ -1,22 +1,26 @@
 var db = require("../db");
-var Llibre = db.model('Llibre', {
-  isbn: {
+var Autor = db.model('Autor', {
+  nom: {
     type: String,
     required: true,
     unique: true
   },
-  titol: {
+  cognom: {
     type: String,
     required: true
   },
-  autors: [{
-    type: db.Schema.Types.ObjectId,
-    ref: 'Autor'
-  }],
+  cognom2: {
+    type: String,
+    required: false
+  },
+  any: {
+    type: String,
+    required: false
+  },
   date: {
     type: Date,
     required: false,
     default: Date.now
   }
 });
-module.exports = Llibre;
+module.exports = Autor;

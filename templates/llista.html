@@ -1,21 +1,22 @@
 <div class="row">
   <hr>
   <br>
-  <!-- <div class= "row" ng-show="loading"> -->
-    <div ng-show="loading" class="whirly">
-        Loading...
-    </div>
-  <!-- </div> -->
+
+  <div ng-show="loading" class="whirly">
+    Loading...
+  </div>
+
   <div class="panel panel-default" ng-repeat="l in llibres">
     <!-- Default panel contents -->
     <div class="panel-heading">
       <strong ng-bind="l.titol"></strong>
-      <button ng-click="removeLlibre($index)">Borrar</button>
-      <button ng-click="editarLlibre($index)">Editar</button>
+      <span ng-if="currentUser" class="btn btn-default glyphicon glyphicon-trash " ng-click="removeLlibre($index)"></span>
+      <span ng-if="currentUser" class="btn btn-default glyphicon glyphicon-pencil " ng-click="editarLlibre($index)"></span>
     </div>
     <div class="panel-body">
       <p>isbn : {{l.isbn}}</p>
-      <p>autors : {{l.autors}} </p>
+      autors :
+      <p ng-repeat="a in l.autors"> {{a.nom}} {{a.cognom}} </p>
     </div>
   </div>
 </div>

@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css" type="text/css" />
   <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="login.css">
   <link rel="stylesheet" href="lib/whirly.css" type="text/css">
 </head>
 
@@ -31,6 +32,9 @@
           <li class=""><a href="/#/">llibres</a></li>
           <li ng-if="currentUser"><a href="/#/noullibre">Crea llibre</a></li>
           <li ng-if="currentUser"><a href="/#/editarllibre">Editar llibre</a></li>
+          <li ><a href="/#/autors">Autors</a></li>
+          <li ng-if="currentUser"><a href="/#/NouAutor">Nou Autor</a></li>
+          <li ng-if="currentUser"><a href="/#/autors">Editar Autor</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li ng-if="!currentUser"><a href="/#/registrar">Registrar</a></li>

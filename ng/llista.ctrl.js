@@ -1,5 +1,5 @@
 angular.module('app')
-  .controller('llistallibre', function($scope, LlibresFactory , $rootScope , $location) {
+  .controller('llistallibre', function($scope, LlibresFactory, $rootScope, $location) {
     $scope.llibres = [];
     $scope.loading = true;
     $scope.llibres = LlibresFactory.query(function(entries) {
@@ -8,16 +8,24 @@ angular.module('app')
     });
 
     $scope.removeLlibre = function(index) {
-      if (index) {
-        LlibresFactory.delete({
-          id: $scope.llibres[index].isbn
-        }, function() {
-          $scope.llibres.splice(index,1);
-        })
+      console.log($scope.currentUser);
+      if ($scope.currentUser) {
+        if (index) {
+          LlibresFactory.delete({
+            id: $scope.llibres[index].isbn
+          }, function() {
+            $scope.llibres.splice(index, 1);
+          })
+        }
+
+      }else{
+        $location.path("/login");
+
       }
+
     }
-    $scope.editarLlibre = function (index){
+    $scope.editarLlibre = function(index) {
       $rootScope.llibreToEdit = $scope.llibres[index];
-      $location.path( "/editarllibre" );
+      $location.path("/editarllibre");
     }
   })
