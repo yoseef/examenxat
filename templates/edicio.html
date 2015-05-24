@@ -10,7 +10,11 @@
         <input class="form-control input-sm" type="text" id="isbn" ng-model="llibre.isbn">
 
         <label class="control-label" for="autors">Autors :</label>
-        <input class="form-control input-sm" type="text" id="autors" ng-model="llibre.autors">
+        <br>
+        <select multiple="true" ng-model="selected">
+          <option ng-repeat="a in llibre.autors" value="{{a._id}}" >{{a.nom}}  {{a.cognom}}</option>
+        </select>
+        <!-- <input class="form-control input-sm" type="text" id="autors" ng-model="llibre.autors"> -->
         <br>
         <div class="btn-group btn-group-justified">
           <a class="btn btn-default" ng-click="netejarCamps()">Cancelar</a>

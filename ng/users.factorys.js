@@ -8,10 +8,12 @@ angular.module('app')
   // })
   .service('UserSvc', function($http) {
     var srv = this;
+    
     srv.auth = false;
     srv.getUser = function() {
         return $http.get('/api/users');
     };
+
     srv.login = function (username, password, noLogin) {
         return $http.post('/api/sessions', {
             username: username,

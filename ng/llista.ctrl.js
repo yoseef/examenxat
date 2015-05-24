@@ -1,11 +1,16 @@
 angular.module('app')
-  .controller('llistallibre', function($scope, LlibresFactory, $rootScope, $location) {
+  .controller('llistallibre', function($scope, LlibresFactory, $rootScope, $location, LlibresSrv) {
     $scope.llibres = [];
     $scope.loading = true;
-    $scope.llibres = LlibresFactory.query(function(entries) {
-      $scope.llibres = entries;
-      $scope.loading = false;
-    });
+
+    function carregarElsLlibres(){
+      LlibresFactory.query(function(entries) {
+        $scope.llibres = entries;
+        $scope.loading = false;
+      });
+    }
+    carregarElsLlibres();
+    LlibresSrv.actualitzar(carregarElsLlibres);
 
     $scope.removeLlibre = function(index) {
       console.log($scope.currentUser);

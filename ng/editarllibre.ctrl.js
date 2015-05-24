@@ -6,7 +6,10 @@ angular.module('app')
     }
     $scope.updateLlibre = function() {
       if($scope.llibre){
+
         if ($scope.llibre.titol != "" && $scope.llibre.isbn != "") {
+          $scope.llibre.autors = $scope.selected;
+          console.log($scope.llibre);
           LlibresFactory.update($scope.llibre, function() {
             console.log('updated')
             //$scope.netejarCamps();
